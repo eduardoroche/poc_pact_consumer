@@ -59,7 +59,7 @@ public class PersonContractTest {
     public RequestResponsePact updatePerson(PactDslWithProvider builder) {
 
         return builder.given(
-                "A person is saved")
+                "A person is updated with an existing id")
                 .uponReceiving("PUT REQUEST")
                 .path("/person/1")
                 .method("PUT")
@@ -124,7 +124,7 @@ public class PersonContractTest {
     public RequestResponsePact deletePerson(PactDslWithProvider builder) {
 
         return builder.given(
-                "A person is requested with an existing id")
+                "A person is deleted with an existing id")
                 .uponReceiving("DELETE REQUEST")
                 .path("/person/1")
                 .method("DELETE")
