@@ -90,7 +90,7 @@ public class PersonContractTest {
 
         return builder.given(
                 "A person is requested with an existing id")
-                .uponReceiving("A GET REQUEST")
+                .uponReceiving("GET REQUEST")
                 .path("/person/1")
                 .method("GET")
                 .willRespondWith()
@@ -125,7 +125,7 @@ public class PersonContractTest {
 
         return builder.given(
                 "A person is requested with an existing id")
-                .uponReceiving("A GET REQUEST")
+                .uponReceiving("DELETE REQUEST")
                 .path("/person/1")
                 .method("DELETE")
                 .willRespondWith()
