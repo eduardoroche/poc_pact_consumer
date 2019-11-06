@@ -63,6 +63,7 @@ public class PersonContractTest {
                 .uponReceiving("PUT REQUEST")
                 .path("/person/1")
                 .method("PUT")
+                .body("{\"name\":\"updated Roche\",\"id\":1}")
                 .willRespondWith()
                 .status(204)
                 .toPact();
