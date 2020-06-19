@@ -7,9 +7,9 @@ pipeline {
       BRANCH_NAME=env.GIT_BRANCH.replace("origin/", "")
   }
 
- // tools {
-//	maven 'maven'
-  //}
+  tools {
+	maven 'maven'
+  }
 
   stages {
     stage('Build') {
