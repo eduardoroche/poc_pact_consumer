@@ -9,10 +9,15 @@ import cdc.rule.RandomPortRule;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.pactfoundation.consumer.dsl.LambdaDsl;
-import okhttp3.*;
-import okio.BufferedSink;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 import org.apache.http.HttpStatus;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.ClassRule;
+import org.junit.Rule;
+import org.junit.Test;
 
 import java.io.IOException;
 
@@ -35,7 +40,7 @@ public class PersonContractTest {
                 .method("POST")
                 .body("{\"name\":\"Roche\"}")
                 .willRespondWith()
-                .status(201)
+                .status(200)
                 .toPact();
     }
 
