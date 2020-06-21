@@ -40,7 +40,7 @@ public class PersonContractTest {
                 .method("POST")
                 .body("{\"name\":\"Roche\"}")
                 .willRespondWith()
-                .status(201)
+                .status(200)
                 .toPact();
     }
 
