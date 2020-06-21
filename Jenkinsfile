@@ -25,12 +25,12 @@ pipeline {
     }
     stage('Publish Pacts') {
         //-- set prod if want to deploy prod tag
-         if(params.pactConsumerTags) {
-            sh 'mvn pact:publish -Dpactbroker.url=http://pact_broker:80 -Dpact.consumer.version=${GIT_COMMIT} -Dpact.tag=${params.pactConsumerTags}'
+         if(env.pactConsumerTags) {
+            sh 'mvn pact:publish -Dpactbroker.url=http://pact_broker:80 -Dpact.consumer.version=${GIT_COMMIT} -Dpact.tag=${env.pactConsumerTags}'
         }
     }
     stage('Check Pact Verifications') {
-        if(params.pactConsumerTags) {
+        if(env.pactConsumerTags) {
             sh 'curl -LO https://github.com/pact-foundation/pact-ruby-standalone/releases/download/v1.61.1/pact-1.61.1-linux-x86_64.tar.gz'
             sh 'tar xzf pact-1.61.1-linux-x86_64.tar.gz'
             dir('pact/bin') {
