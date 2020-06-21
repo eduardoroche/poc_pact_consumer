@@ -7,7 +7,6 @@ pipeline {
 
   environment {
       BRANCH_NAME=env.GIT_BRANCH.replace("origin/", "")
-       COMMIT=env.GIT_COMMIT
   }
 
   tools {
@@ -21,9 +20,11 @@ pipeline {
   stages {
     stage('Build') {
       steps {
+      script {
 	   sh "mvn clean verify"
 	     sh 'git rev-parse HEAD > commit'
         COMMIT = readFile('commit').trim()
+        }
       }
     }
     stage('Publish Pacts') {
