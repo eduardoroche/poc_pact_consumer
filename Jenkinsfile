@@ -11,7 +11,7 @@ pipeline {
 	maven 'maven'
   }
 
-  properties([
+  options([
         parameters ([
            string(name: 'pactConsumerTags', defaultValue: '')
          ])
