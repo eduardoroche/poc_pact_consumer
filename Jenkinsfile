@@ -11,11 +11,9 @@ pipeline {
 	maven 'maven'
   }
 
-   properties([
-         parameters ([
-            string(name: 'pactConsumerTags', defaultValue: '')
-          ])
-      ])
+    parameters {
+        string(name: 'pactConsumerTags', defaultValue: '')
+    }
 
   stages {
     stage('Build') {
@@ -28,7 +26,7 @@ pipeline {
         //-- set prod if want to deploy prod tag
          if(params.pactConsumerTags) {
             sh 'mvn pact:publish -Dpactbroker.url=http://pact_broker:80 -Dpact.consumer.version=${GIT_COMMIT} -Dpact.tag=${params.pactConsumerTags}'
-            }
+        }
       }
     }
     stage('Check Pact Verifications') {
