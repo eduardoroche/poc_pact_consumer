@@ -11,9 +11,11 @@ pipeline {
 	maven 'maven'
   }
 
-    parameters {
-        string(name: 'pactConsumerTags', defaultValue: 'prod')
-    }
+  properties([
+        parameters ([
+           string(name: 'pactConsumerTags', defaultValue: '')
+         ])
+     ])
 
   stages {
     stage('Build') {
