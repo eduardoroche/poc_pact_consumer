@@ -3,10 +3,11 @@ pipeline {
 
   agent any
 
-  def COMMIT = null
+
 
   environment {
       BRANCH_NAME=env.GIT_BRANCH.replace("origin/", "")
+      COMMIT = null
   }
 
   tools {
