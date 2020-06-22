@@ -70,7 +70,7 @@ public class PersonContractTest {
                 .method("PUT")
                 .body("{\"name\":\"updated Roche\",\"id\":1}")
                 .willRespondWith()
-                .status(204)
+                .status(201)
                 .toPact();
     }
 
