@@ -101,7 +101,7 @@ public class PersonContractTest {
                 .willRespondWith()
                 .status(200)
                 .body(LambdaDsl.newJsonBody(body -> {
-                    body.id("id", 1l).stringValue("name", "Roche");
+                    body.id("id", 1l).numberValue("name", 1);
                 }).build())
                 .toPact();
     }
@@ -111,7 +111,8 @@ public class PersonContractTest {
     public void generateGetPersonContract() throws IOException {
         //Arrange
         Long expectedId = 1l;
-        String expectedName = "Roche";
+        //String expectedName = "Roche";
+        int expectedName = 1;
         String url = mockedProviderServer.getUrl().concat("/person/").concat(expectedId.toString());
         Request request = new Request.Builder().url(url).build();
         ObjectMapper mapper = new ObjectMapper();
@@ -131,7 +132,7 @@ public class PersonContractTest {
         return builder.given(
                 "A person is deleted with an existing id")
                 .uponReceiving("DELETE REQUEST")
-                .path("/person/2")
+                .path("/person/1")
                 .method("DELETE")
                 .willRespondWith()
                 .status(200)
@@ -142,7 +143,7 @@ public class PersonContractTest {
     @Test
     public void generateDeletePersonContract() throws IOException {
         //Arrange
-        Long id = 2l;
+        Long id = 1l;
         String url = mockedProviderServer.getUrl().concat("/person/").concat(id.toString());
         Request request = new Request.Builder().url(url).delete().build();
         int expectedStatusCode = HttpStatus.SC_OK;
