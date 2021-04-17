@@ -101,7 +101,7 @@ public class PersonContractTest {
                 .willRespondWith()
                 .status(200)
                 .body(LambdaDsl.newJsonBody(body -> {
-                    body.id("id", 1l).numberValue("name", 1);
+                    body.id("id", 1l).stringValue("name", "Roche");
                 }).build())
                 .toPact();
     }
@@ -111,8 +111,7 @@ public class PersonContractTest {
     public void generateGetPersonContract() throws IOException {
         //Arrange
         Long expectedId = 1l;
-        //String expectedName = "Roche";
-        int expectedName = 1;
+        String expectedName = "Roche";
         String url = mockedProviderServer.getUrl().concat("/person/").concat(expectedId.toString());
         Request request = new Request.Builder().url(url).build();
         ObjectMapper mapper = new ObjectMapper();
@@ -123,7 +122,7 @@ public class PersonContractTest {
         //Assert
         JsonNode jsonNode = mapper.readTree(actualJsonData);
         Assert.assertEquals(expectedId.toString(), jsonNode.path("id").toString());
-        Assert.assertEquals(expectedName, jsonNode.get("name").asInt());
+        Assert.assertEquals(expectedName, jsonNode.get("name").toString().replaceAll("\"", ""));
     }
 
     @Pact(consumer = "person-consumer", provider = "person-provider")
