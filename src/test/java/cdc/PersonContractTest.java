@@ -123,7 +123,7 @@ public class PersonContractTest {
         //Assert
         JsonNode jsonNode = mapper.readTree(actualJsonData);
         Assert.assertEquals(expectedId.toString(), jsonNode.path("id").toString());
-        Assert.assertEquals(expectedName, jsonNode.get("name"));
+        Assert.assertEquals(expectedName, jsonNode.get("name").asInt());
     }
 
     @Pact(consumer = "person-consumer", provider = "person-provider")
