@@ -131,7 +131,7 @@ public class PersonContractTest {
         return builder.given(
                 "A person is deleted with an existing id")
                 .uponReceiving("DELETE REQUEST")
-                .path("/person/1")
+                .path("/person/2")
                 .method("DELETE")
                 .willRespondWith()
                 .status(200)
