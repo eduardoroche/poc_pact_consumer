@@ -142,7 +142,7 @@ public class PersonContractTest {
     @Test
     public void generateDeletePersonContract() throws IOException {
         //Arrange
-        Long id = 1l;
+        Long id = 2l;
         String url = mockedProviderServer.getUrl().concat("/person/").concat(id.toString());
         Request request = new Request.Builder().url(url).delete().build();
         int expectedStatusCode = HttpStatus.SC_OK;
