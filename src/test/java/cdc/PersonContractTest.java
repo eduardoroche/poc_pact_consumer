@@ -147,6 +147,7 @@ public class PersonContractTest {
         Request request = new Request.Builder().url(url).delete().build();
         int expectedStatusCode = HttpStatus.SC_OK;
 
+
         //Act
         int actualStatus = new OkHttpClient().newCall(request).execute().code();
 
