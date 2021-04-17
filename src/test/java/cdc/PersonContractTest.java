@@ -134,7 +134,7 @@ public class PersonContractTest {
                 .path("/person/2")
                 .method("DELETE")
                 .willRespondWith()
-                .status(204)
+                .status(200)
                 .toPact();
     }
 
@@ -145,7 +145,7 @@ public class PersonContractTest {
         Long id = 2l;
         String url = mockedProviderServer.getUrl().concat("/person/").concat(id.toString());
         Request request = new Request.Builder().url(url).delete().build();
-        int expectedStatusCode = HttpStatus.SC_NO_CONTENT;
+        int expectedStatusCode = HttpStatus.SC_OK;
 
 
         //Act
