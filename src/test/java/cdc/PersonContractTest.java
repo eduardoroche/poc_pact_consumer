@@ -40,7 +40,7 @@ public class PersonContractTest {
                 .method("POST")
                 .body("{\"name\":\"Roche\"}")
                 .willRespondWith()
-                .status(204)
+                .status(201)
                 .toPact();
     }
 
@@ -51,7 +51,7 @@ public class PersonContractTest {
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         String url = mockedProviderServer.getUrl().concat("/person");
         Request request = new Request.Builder().url(url).post(RequestBody.create(JSON, "{\"name\":\"Roche\"}")).build();
-        int expectedStatusCode = HttpStatus.SC_NO_CONTENT;
+        int expectedStatusCode = HttpStatus.SC_CREATED;
 
         //Act
         int actualStatus = new OkHttpClient().newCall(request).execute().code();
