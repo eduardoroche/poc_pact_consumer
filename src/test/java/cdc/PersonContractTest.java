@@ -32,7 +32,6 @@ public class PersonContractTest {
 
     @Pact(consumer = "person-consumer", provider = "person-provider")
     public RequestResponsePact savePerson(PactDslWithProvider builder) {
-
         return builder.given(
                 "A person is saved")
                 .uponReceiving("POST REQUEST")
